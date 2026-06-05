@@ -55,7 +55,7 @@ python main.py
 ## 📁 Projektstruktur
 
 ```
-tamagotchi/
+PicoPet/
 ├── main.py                  # Einstiegspunkt
 ├── config.py                # Zentrale Spielwerte
 ├── tamagotchi/
@@ -72,7 +72,9 @@ tamagotchi/
 │   ├── __init__.py
 │   └── test_tamagotchi.py   # pytest Unittests
 ├── docs/
-│   └── lastenheft.md        # Projektdokumentation
+│   ├── Klassendiagramm.png
+│   ├── Tamagotchi.pdf
+│   └── lastenheft.md       
 ├── .gitignore
 └── README.md
 ```
