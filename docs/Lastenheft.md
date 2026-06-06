@@ -1,176 +1,163 @@
-# Lastenheft – Tamagotchi (Grundversion v. 1.x)  
+# Lastenheft – Tamagotchi Desktop-Anwendung
 
-## **Autor:** Tim K.
-
-**Datum:** 04.06.2026
-
-**Version:** 0.1
-
-**Projekttyp:** Lernprojekt / Umschulungsprojekt
-
----
-
-## 1. Projektübersicht
-
-Ziel dieses Projekts ist die Entwicklung eines textbasierten Tamagotchi-Spiels mit grafischer Oberfläche. Das Projekt dient gleichzeitig als Lernprojekt und als Nachweis für das Verständnis des Softwareentwicklungsprozesses im Rahmen der Umschulung.
-
----
-
-## 2. Ziele
-
-- Entwicklung einer lauffähigen Grundversion eines Tamagotchi-Spiels
-- Dokumentation des gesamten Entwicklungsprozesses
-- Anwendung von OOP, Modularisierung und Clean Code in Python
-- Einsatz von Git/GitHub zur Versionskontrolle
-- Nachweis von Projektmanagement-Kompetenzen (Kanban, User Stories, Versionsverlauf)
-
----
-
-## 3. Nicht-Ziele (Wird nicht eingebaut)
-
-Folgende Features sind bewusst **ausgeschlossen** und werden nicht Teil der Grundversion:
-
-- Multiplayer-Funktionen
-- Ingame-Shop
-- KI-Integration
-- Onlinefunktionen jeglicher Art
-
----
-
-## 4. Zielgruppe / Nutzer
-
-| Rolle | Beschreibung |
+| Feld | Inhalt |
 | --- | --- |
-| Spieler | Nutzt das Spiel interaktiv über die GUI |
-| Entwickler (Tim) | Entwickelt, testet und dokumentiert das Projekt |
-| Prüfer | Bewertet den Entwicklungsprozess und die Umsetzung |
+| **Auftraggeber** | PixelPet GmbH, Hamburg |
+| **Auftragnehmer** | Tim K. |
+| **Datum** | 04.06.2026 |
+| **Version** | 0.1 |
+| **Status** | In Abstimmung |
 
 ---
 
-## 5. Technische Anforderungen
+## Inhaltsverzeichnis
 
-| Bereich | Details |
+1. Ausgangssituation
+2. Projektziel
+3. Zielgruppe
+4. Anforderungen
+5. Nicht-Ziele
+6. Technische Rahmenbedingungen
+7. Spielkonzept
+8. Bekannte Risiken
+9. Liefergegenstände
+10. Versionsverlauf
+
+---
+
+## 1. Ausgangssituation
+
+Die PixelPet GmbH möchte ein eigenständiges Desktop-Spiel entwickeln lassen, das das Konzept klassischer Tamagotchi-Handhelds aus den 1990er Jahren als moderne PC-Anwendung neu interpretiert. Das Produkt soll als lauffähige Grundversion ausgeliefert werden und als Basis für spätere Erweiterungen dienen.
+
+Der Auftraggeber verfügt über kein eigenes Entwicklungsteam und beauftragt die Umsetzung extern.
+
+---
+
+## 2. Projektziel
+
+Entwicklung einer stabilen Desktop-Anwendung, in der der Nutzer ein virtuelles Haustier (Tamagotchi) pflegen, füttern und bespielen kann. Das Haustier reagiert auf Vernachlässigung mit sinkenden Statuswerten und stirbt bei vollständiger Vernachlässigung.
+
+Die Anwendung soll intuitiv bedienbar sein und ohne technische Vorkenntnisse genutzt werden können.
+
+---
+
+## 3. Zielgruppe
+
+| Nutzergruppe | Beschreibung |
 | --- | --- |
-| Sprache | Python |
-| Oberfläche | Eigenes Fenster via tkinter |
-| Zeitmechanik | threading |
-| Steuerung | Maus und Tastatur |
-| Sprache (UI) | Deutsch |
-| Tools | VS Code, Git, GitHub, Notion, Draw.io |
+| Hauptzielgruppe | Kinder und Jugendliche (8–16 Jahre) |
+| Sekundärzielgruppe | Nostalgisch interessierte Erwachsene (25–40 Jahre) |
+| Betriebssystem | Windows 10/11, macOS |
 
 ---
 
-## 6. Tamagotchi-Typen (Grundversion)
+## 4. Anforderungen
 
-| Typ | Bewegung | Laut |
+### 4.1 Funktionale Anforderungen
+
+| ID | Anforderung |
+| --- | --- |
+| FA-01 | Der Nutzer kann ein neues Tamagotchi erstellen und benennen |
+| FA-02 | Das Tamagotchi besitzt Statuswerte: Hunger, Müdigkeit, Hygiene, Langeweile, Gesundheit |
+| FA-03 | Der Nutzer kann das Tamagotchi füttern, schlafen legen, waschen, bespielen und heilen |
+| FA-04 | Statuswerte sinken automatisch mit der Zeit |
+| FA-05 | Bei kritischen Werten erhält der Nutzer eine Warnanzeige |
+| FA-06 | Das Tamagotchi stirbt bei Gesundheit = 0; Todesursache wird angezeigt |
+| FA-07 | Nach dem Tod kann ein Neustart erfolgen |
+| FA-08 | Der Spielstand wird beim Beenden automatisch gespeichert und beim Start geladen |
+| FA-09 | Das Tamagotchi durchläuft mindestens drei Entwicklungsstufen (Baby → Kind → Erwachsener) |
+| FA-10 | Das Spiel kann pausiert und fortgesetzt werden |
+
+### 4.2 Nicht-funktionale Anforderungen
+
+| ID | Anforderung |
+| --- | --- |
+| NFA-01 | Die Anwendung startet in unter 5 Sekunden |
+| NFA-02 | Die Benutzeroberfläche ist auf Deutsch |
+| NFA-03 | Die Steuerung erfolgt ausschließlich per Maus und Tastatur |
+| NFA-04 | Der Quellcode ist modular und wartbar strukturiert |
+| NFA-05 | Die Anwendung stürzt bei einem beschädigten Spielstand nicht ab |
+
+---
+
+## 5. Nicht-Ziele
+
+Folgende Features sind ausdrücklich **nicht** Bestandteil der beauftragten Grundversion:
+
+- Multiplayer- oder Online-Funktionen
+- Ingame-Shop oder Währungssystem
+- KI-gesteuerte Verhaltenslogik
+- Mobile- oder Browserversion
+
+---
+
+## 6. Technische Rahmenbedingungen
+
+| Bereich | Vorgabe |
+| --- | --- |
+| Programmiersprache | Python |
+| Benutzeroberfläche | `tkinter` |
+| Zeitmechanik | `threading` |
+| Persistenz | JSON-Datei (lokales Speichern) |
+| Versionskontrolle | Git / GitHub |
+
+---
+
+## 7. Spielkonzept
+
+### 7.1 Verfügbare Tiertypen (Grundversion)
+
+| Typ | Bewegung | Charakterlaut |
 | --- | --- | --- |
-| Dino | Laufen | "Rawr" |
-| Vogel | Fliegen | "Pieps" |
+| Dino | Laufen | „Rawr" |
+| Vogel | Fliegen | „Pieps" |
 
----
+### 7.2 Statuswerte und Aktionen
 
-## 7. Spielmechanik
-
-### 7.1 Bedürfnisse
-
-| Bedürfnis | Beschreibung |
-| --- | --- |
-| Hunger | Sinkt mit der Zeit, steigt durch Füttern |
-| Müdigkeit | Sinkt mit der Zeit, steigt durch Schlafen |
-| Hygiene | Sinkt mit der Zeit, steigt durch Putzen |
-| Langeweile | Sinkt mit der Zeit, steigt durch Spielen |
-| Gesundheit | Sinkt bei Vernachlässigung, steigt durch Spritze |
-
-### 7.2 Funktionen & Werte
-
-| Funktion | Wertanstieg |
-| --- | --- |
-| Füttern | +20 |
-| Schlafen legen | +50 |
-| Putzen | +25 |
-| Spielen | +50 |
-| Spritze | +50 |
+| Aktion | Betroffener Wert | Änderung |
+| --- | --- | --- |
+| Füttern | Hunger | +20 |
+| Schlafen legen | Müdigkeit | +50 |
+| Waschen | Hygiene | +25 |
+| Spielen | Langeweile | +50 |
+| Heilen | Gesundheit | +50 |
 
 ### 7.3 Zeitbasierte Mechanik
 
-- Werte sinken **kontinuierlich** alle 900 Sekunden um -5
-- Bei einem Bedürfniswert >= 70: Hinweisausgabe
-- Bei Gesundheit = 0: Tamagotchi stirbt
+- Alle Statuswerte sinken alle **900 Sekunden** um `5`
+- Warnhinweis bei einem Wert ≥ 70 (kritischer Bereich)
+- Tod bei Gesundheit = 0
 
 ---
 
-## 8. User Stories (Grundversion)
+## 8. Bekannte Risiken
 
-### Spieler
-
-| ID | Titel | Kurzbeschreibung |
+| Bereich | Risiko | Einschätzung |
 | --- | --- | --- |
-| US-01 | Tamagotchi erstellen | Name vergeben, Startwerte setzen, Anzeige nach Erstellung |
-| US-02 | Füttern | Hungerwert steigt, Überfressen möglich, Hinweis bei vollem Hunger |
-| US-03 | Spielen | Glückswert steigt, Energie/Hunger sinkt leicht |
-| US-04 | Schlafen | Energie steigt, keine anderen Aktionen im Schlaf möglich |
-| US-05 | Heilen | Nur bei Krankheit verfügbar, Gesundheitswert steigt |
-| US-06 | Pflegen | Hygienewert steigt, niedriger Wert erhöht Krankheitsrisiko |
-| US-07 | Statuswerte einsehen | Alle Werte jederzeit sichtbar, Aktualisierung nach jeder Aktion |
-| US-08 | Alter sehen | Alter in Tagen, steigt automatisch, auch beim Tod sichtbar |
-| US-10 | Tod | Tod bei Hunger oder Gesundheit = 0, Todesursache angezeigt |
-| US-11 | Neustart | Nach Tod verfügbar, alle Werte zurückgesetzt, neuer Name möglich |
-| US-12 | Kritische Werte | Warnung unter Schwellenwert, visuelle oder textliche Anzeige |
+| Balancing | Werte- und Zeitbalancing schwer vorab kalkulierbar | Mittel |
+| Bibliotheken | `tkinter` und `threading` können plattformabhängig abweichen | Mittel |
+| Persistenz | Spielstand-Speicherung in frühen Versionen noch nicht stabil | Hoch |
+| Scope | Wachsende Anforderungen könnten Grundversion verzögern | Niedrig |
 
-### Entwickler
+---
 
-| ID | Titel | Kurzbeschreibung |
+## 9. Liefergegenstände
+
+| Gegenstand | Beschreibung |
+| --- | --- |
+| Quellcode | Vollständiger, kommentierter Python-Quellcode auf GitHub |
+| Dokumentation | Projektdokumentation inkl. Pflichtenheft, Diagramme, Testprotokolle |
+| Ausführbare Anwendung | Lauffähige Version für Windows und/oder macOS |
+| README | Installations- und Bedienungsanleitung auf GitHub |
+
+---
+
+## 10. Versionsverlauf
+
+| Version | Datum | Änderung |
 | --- | --- | --- |
-| US-16 | Spielstand speichern | Automatisch als JSON beim Beenden, laden beim Start |
-| US-17 | Zeitbasierter Werteverfall | Intervalle und Raten zentral konfigurierbar |
-| US-19 | Konfigurierbare Spielwerte | Keine Magic Numbers, Änderungen in Konfigurationsdatei |
-| US-20 | Automatische Krankheit | Tritt bei Vernachlässigung auf, heilbar, sonst Tod |
-| US-21 | Unittests | Tests für Kernlogik via pytest, müssen grün sein vor Merge |
-| US-22 | Fehlerbehandlung | Korrupter Spielstand wird abgefangen, Programm startet neu |
+| 0.1 | 04.06.2026 | Erstversion des Lastenhefts |
 
 ---
 
-## 9. Bekannte Risiken & Probleme
-
-| Bereich | Problem |
-| --- | --- |
-| Coding | Zu volle Module, Dirty Code |
-| Balancing | Zeit- und Wertebalancing schwer abzuschätzen |
-| Funktionen | Funktionen könnten falsch implementiert oder fehlerhaft agieren |
-| Bibliotheken | tkinter und threading können unerwartetes Verhalten zeigen |
-| Persistenz | Keine funktionierende Persistenz in frühen Versionen |
-
----
-
-## 10. Dokumentation & Tools
-
-| Tool | Verwendungszweck |
-| --- | --- |
-| Notion | Dokumentation, Kanban, Projekt-Wiki |
-| GitHub | Quellcode, Versionskontrolle |
-| Draw.io | Diagramme (UML, Klassendiagramm, Anwendungsdiagramm) |
-| VS Code | Entwicklung, Debugging, Testing |
-
----
-
-## 11. Versionsverlauf
-
-| Phase | Version | Beschreibung |
-| --- | --- | --- |
-| Entwicklung | v. 0.x | Entwicklungsversion, instabil |
-| Grundversion | v. 1.x | Stabile Grundversion, nach erfolgreichem Testing |
-| Release | – | Push auf main Branch, README anpassen, Präsentation |
-
----
-
-## 12. Lernziele des Projekts
-
-| Bereich | Themen |
-| --- | --- |
-| Projektmanagement | Kanban, User Stories, Zeitmanagement, Netzplan |
-| Programmierung | OOP (Vererbung, Kapselung), Modularisierung, Clean Code |
-| Bibliotheken | tkinter, threading |
-| Git/GitHub | Versionskontrolle, Branches, Mergen, Push/Pull |
-| Dokumentation | Schreiben, Verstehen, Zerlegen, Schätzung |
-
----
+*Dieses Lastenheft wurde im Rahmen eines Lernprojekts der Umschulung zum Fachinformatiker Anwendungsentwicklung (FIAE) an der IBB Wilhelmshaven erstellt. Der Auftraggeber „PixelPet GmbH" ist fiktiv.*
