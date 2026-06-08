@@ -7,8 +7,9 @@ class Werte:
             Kritische_beduerfniss_runden: Durchläufe Bleiben bis das Pet stirbt
             gesundheits_abzug: Um diesen Wert sinkt die Gesundheit nach Kritischen Bedürfnisse"""
     
-    threading_ticker = 720.0
+    threading_werte =  1.0 #720.0
+    threading_alter = 1.0 #86400 
     kritischer_beduerfniss_wert = 75
-    bedüfniss_sinkt_um_wert = 5
+    bedüfniss_sinkt_um_wert = 25
     kritische_beduerfniss_runden = 5
     gesundheits_abzug = 20
