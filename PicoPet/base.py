@@ -64,15 +64,18 @@ class Beduerfnisse:
         
         if self.__gesundheit > 0:
             timer = threading.Timer(Werte.threading_werte, self.beduerfnisse_steigen)
-            timer.start()          
-        elif self.__gesundheit < 20:
-            print("Ich werde Krank") 
-        if self.__gesundheit <= 0:
-            print(f"{self.__name} ist im alter von {self.__alter} gestorben!!!!")
+            timer.start()      
+        if self.__gesundheit > 20:
+            pass
+        elif self.__gesundheit <= 0:
+            print(f"{self.__name} ist im Alter von {self.__alter} gestorben.")
+        elif self.__gesundheit <= 20:
+            print("Ich werde krank")
+        
             
     def alter_steigt(self):
-        if self.__alter >=0:
-            self.alter += 1
+        if self.__alter >= 0:
+            self.__alter += 1
             timer = threading.Timer(Werte.threading_alter, self.alter_steigt)
             timer.start()  
             
