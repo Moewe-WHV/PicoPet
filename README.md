@@ -93,10 +93,10 @@ pytest tests/
 
 ### Grundversion (v1.x)
 - [x] Projektstruktur
-- [ ] Tamagotchi Basisklasse
+- [x] Tamagotchi Basisklasse
 - [ ] Dino & Vogel
 - [ ] tkinter GUI
-- [ ] Zeitbasierter Werteverfall
+- [x] Zeitbasierter Werteverfall
 - [ ] Spielstand speichern (JSON)
 - [ ] Unittests
 
