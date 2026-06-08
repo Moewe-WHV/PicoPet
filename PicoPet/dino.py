@@ -2,9 +2,9 @@ from PicoPet.base import Beduerfnisse
 
 
 class Dino(Beduerfnisse):
-    def __init__(self, hunger, muedigkeit, langeweile, dreck, gesundheit, name):
+    def __init__(self, hunger, muedigkeit, langeweile, dreck, gesundheit, alter, name):
         """Erstellt einen neuen Dino mit den angegebenen Startwerten."""
-        super().__init__(hunger, muedigkeit, langeweile, dreck, gesundheit, name)
+        super().__init__(hunger, muedigkeit, langeweile, dreck, gesundheit, alter, name)
         self.laut_geben = "Rawr"
         self.bewegen = "Läuft umher."
         self.spielen = "Sucht den Ball und bringt in dir."
