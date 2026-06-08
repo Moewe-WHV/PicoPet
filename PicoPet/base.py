@@ -6,14 +6,14 @@ class Beduerfnisse:
         Alle Werte steigen automatisch alle 12 Minuten um 5 Punkte.
         Bei einem Wert von 70 oder höher wird eine Warnung ausgegeben."""
     
-    def __init__(self, hunger, muedigkeit, langeweile, dreck, gesundheit):
+    def __init__(self, hunger, muedigkeit, langeweile, dreck, gesundheit, name):
         """Initialisiert die Bedürfniswerte, Gesundheitswerte und startet die automatischen Timer.
                 Args:
                     hunger: Anfangswert für Hunger (0–100).
                     dreck: Anfangswert für Verschmutzung (0–100).
                     muedigkeit: Anfangswert für Müdigkeit (0–100).
                     langeweile: Anfangswert für Langeweile (0–100, hoher Wert = gelangweilt)."""          
-        
+        self.name = name
         self.__gesundheit = gesundheit
         self.__beduerfnisse = {
             "hunger":{
