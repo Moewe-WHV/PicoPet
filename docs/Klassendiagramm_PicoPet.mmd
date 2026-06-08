@@ -1,0 +1,32 @@
+classDiagram
+    class PicoPet {
+        - name: str
+        - hunger: int
+        - muedigkeit: int
+        - hygiene: int
+        - langeweile: int
+        - gesundheit: int
+        - alter: int
+        + __init__(name: str)
+        + fuettern()
+        + putzen()
+        + spielen()
+        + spritze()
+        + werte_verfall()
+        + status_anzeige()
+        + laut_geben()
+        + bewegen()
+    }
+
+    class Dino {
+        + laut_geben()
+        + bewegen()
+    }
+
+    class Vogel {
+        + laut_geben()
+        + bewegen()
+    }
+
+    PicoPet <|-- Dino
+    PicoPet <|-- Vogel
