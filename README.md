@@ -1,4 +1,4 @@
-# 🦕 Tamagotchi
+# 🦕 PicoPet
 
 Ein textbasiertes Tamagotchi-Spiel mit grafischer Oberfläche, entwickelt in Python.  
 Lernprojekt im Rahmen der Umschulung zum Fachinformatiker Anwendungsentwicklung (FIAE).
@@ -38,13 +38,10 @@ Lernprojekt im Rahmen der Umschulung zum Fachinformatiker Anwendungsentwicklung 
 
 ```bash
 # Repository klonen
-git clone https://github.com/DEIN-NAME/tamagotchi.git
+git clone https://github.com/Moewe-WHV/PicoPet.git
 
 # In den Projektordner wechseln
-cd tamagotchi
-
-# Abhängigkeiten installieren (falls vorhanden)
-pip install -r requirements.txt
+cd PicoPet
 
 # Spiel starten
 python main.py
@@ -55,26 +52,26 @@ python main.py
 ## 📁 Projektstruktur
 
 ```
-PicoPet/
+PicoPet/                     # Root
 ├── main.py                  # Einstiegspunkt
-├── config.py                # Zentrale Spielwerte
-├── tamagotchi/
+├── config.py                # Zentrale Spielwerte (keine Magic Numbers)
+├── conftest.py              # pytest Pfad-Konfiguration
+├── PicoPet/                 # Kern-Paket
 │   ├── __init__.py
-│   ├── base.py              # Basisklasse Tamagotchi
-│   ├── dino.py              # Dino-Klasse
-│   └── vogel.py             # Vogel-Klasse
-├── gui/
-│   ├── __init__.py
-│   └── app.py               # tkinter GUI
-├── data/
-│   └── save.json            # Spielstand (automatisch erstellt)
-├── tests/
-│   ├── __init__.py
-│   └── test_tamagotchi.py   # pytest Unittests
-├── docs/
-│   ├── Klassendiagramm.png
-│   ├── Tamagotchi.pdf
-│   └── lastenheft.md       
+│   ├── base.py              # Basisklasse (Bedürfnisse, Gesundheit, Timer)
+│   └── dino.py              # Dino-Subklasse
+├── gui/                     # GUI-Paket (in Entwicklung)
+│   └── __init__.py
+├── data/                    # Persistenz (in Entwicklung)
+│   └── __init__.py
+├── tests/                   # pytest Unittests
+│   └── test_tamagotchi.py
+├── docs/                    # Projektdokumentation
+│   ├── Klassendiagramm_PicoPet.mmd
+│   ├── Entwickler_Use_Case.png
+│   ├── Spieler_Use_Case.png
+│   ├── Lastenheft.md
+│   └── Tamagotchi.pdf
 ├── .gitignore
 └── README.md
 ```
@@ -92,20 +89,24 @@ pytest tests/
 ## 🗺️ Roadmap
 
 ### Grundversion (v1.x)
-- [x] Projektstruktur
-- [x] Tamagotchi Basisklasse
-- [ ] Dino & Vogel
-- [ ] tkinter GUI
-- [x] Zeitbasierter Werteverfall
-- [ ] Spielstand speichern (JSON)
-- [ ] Unittests
+
+- [x] Projektstruktur aufgesetzt
+- [x] config.py – zentrale Spielwerte
+- [x] Basisklasse `Beduerfnisse` mit Threading & Gesundheitslogik
+- [x] Dino-Subklasse
+- [ ] Vogel-Subklasse
+- [ ] tkinter GUI (`app.py`)
+- [ ] Spielstand speichern/laden (JSON)
+- [ ] Unittests grün
 
 ### Update (v2.x)
+
 - [ ] Schlange als neues Tamagotchi
 - [ ] Toilettengang
 - [ ] Weitere Futterarten
 - [ ] Gehäuseanpassungen
 - [ ] Weitere Spielarten
+
 ---
 
 ## 📚 Lernziele
@@ -123,4 +124,4 @@ Dieses Projekt dient dem Erlernen und Anwenden von:
 
 ## 📄 Lizenz
 
-Dieses Projekt ist ein privates Lernprojekt und nicht für den kommerziellen Einsatz bestimmt.
+Dieses Projekt ist ein privates Lernprojekt und nicht für den kommerziellen Einsatz bestimmt.    
