@@ -1,5 +1,6 @@
 import threading 
 from config import Werte
+import os
 
 class Beduerfnisse: 
     """Verwaltet die Bedürfnisse eines Tamagotchi-Tieres (Hunger, Dreck, Müdigkeit, Freude).
@@ -69,11 +70,13 @@ class Beduerfnisse:
             pass
         elif self.__gesundheit <= 0:
             print(f"{self.__name} ist im Alter von {self.__alter} gestorben.")
+            os.remove("savegame.json")
         elif self.__gesundheit <= 20:
             print("Ich werde krank")
         
             
     def alter_steigt(self):
+        """Erhöht das Alter um 1 und startet den Timer für den nächsten Schritt."""
         if self.__alter >= 0:
             self.__alter += 1
             timer = threading.Timer(Werte.threading_alter, self.alter_steigt)
