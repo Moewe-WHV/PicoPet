@@ -13,7 +13,13 @@ def main():
     else: 
         name = input("Wie soll dein Pet heißen?\n")
         dino = Dino(0, 0, 0, 0, 100, 0, name = name)
-    daten = {"hunger": dino.hunger, 
+    
+    laeuft = True
+    while laeuft: 
+        eingabe = input("Was möchtest du tun?")
+        if eingabe == "Ende": 
+            laeuft = False
+            daten = {"hunger": dino.hunger, 
              "muedigkeit": dino.muedigkeit , 
              "langeweile": dino.langeweile, 
              "dreck": dino.dreck, 
@@ -30,3 +36,6 @@ def main():
         json.dump(daten, sg)
 if __name__ == "__main__":
     main()
+    
+    
+    
