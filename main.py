@@ -15,27 +15,50 @@ def main():
         dino = Dino(0, 0, 0, 0, 100, 0, name = name)
     
     laeuft = True
-    while laeuft: 
-        eingabe = input("Was möchtest du tun?")
-        if eingabe == "Ende": 
+    while laeuft:
+        print(
+            "\nWas möchtest du tun?\n"
+            "  füttern  - stillt den Hunger (macht etwas dreckig)\n"
+            "  spielen  - vertreibt die Langeweile (macht hungrig und müde)\n"
+            "  schlafen - nimmt die Müdigkeit (macht hungrig)\n"
+            "  putzen   - entfernt den Dreck\n"
+            "  status   - zeigt die Werte\n"
+            "  Ende     - speichern und beenden"
+        )
+        eingabe = input("> ").strip().lower()
+
+        if eingabe == "füttern":
+            dino.fuettern()
+            print(dino.fressen_text)
+        elif eingabe == "spielen":
+            dino.spielen()
+            print(dino.spielen_text)
+        elif eingabe == "schlafen":
+            dino.schlafen()
+            print(dino.schlafen_text)
+        elif eingabe == "putzen":
+            dino.putzen()
+            print(dino.putzen_text)
+        elif eingabe == "status":
+            print(
+                f"{dino.name}: Hunger {dino.hunger}, Müdigkeit {dino.muedigkeit}, "
+                f"Langeweile {dino.langeweile}, Dreck {dino.dreck}, "
+                f"Gesundheit {dino.gesundheit}, Alter {dino.alter}"
+            )
+        elif eingabe == "ende":
             laeuft = False
-            daten = {"hunger": dino.hunger, 
-             "muedigkeit": dino.muedigkeit , 
-             "langeweile": dino.langeweile, 
-             "dreck": dino.dreck, 
-             "gesundheit": dino.gesundheit, 
-             "alter": dino.alter, 
-             "name": dino.name 
+        else:
+            print("Das verstehe ich nicht.")
+
+    daten = {"hunger": dino.hunger,
+             "muedigkeit": dino.muedigkeit,
+             "langeweile": dino.langeweile,
+             "dreck": dino.dreck,
+             "gesundheit": dino.gesundheit,
+             "alter": dino.alter,
+             "name": dino.name
             }
-        
-    print(f"\n\nDein Pet heißt: {dino.name}")
-    print(f"Alter: {dino.alter}")
-    print("-" * 20)
-    
-    with open("savegame.json", "w") as sg: 
+    with open("savegame.json", "w") as sg:
         json.dump(daten, sg)
 if __name__ == "__main__":
     main()
-    
-    
-    

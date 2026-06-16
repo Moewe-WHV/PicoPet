@@ -75,7 +75,41 @@ class Beduerfnisse:
         if self.__alter >= 0:
             self.__alter += 1
             timer = threading.Timer(Werte.threading_alter, self.alter_steigt)
-            timer.start()  
+            timer.start()
+# Aktionen
+    def _beduerfnis_senken(self, etikett, wert):
+        """Senkt ein Bedürfnis um den Wert, aber nicht unter 0.
+        Verlässt das Bedürfnis den kritischen Bereich, wird der Zähler
+        für die Gesundheitslogik zurückgesetzt."""
+        neuer_wert = self.__beduerfnisse[etikett]["wert"] - wert
+        self.__beduerfnisse[etikett]["wert"] = max(0, neuer_wert)
+        if self.__beduerfnisse[etikett]["wert"] < Werte.kritischer_beduerfniss_wert:
+            self.__beduerfnisse[etikett]["runden_ueber_80"] = 0
+
+    def _beduerfnis_steigern(self, etikett, wert):
+        """Erhöht ein Bedürfnis um den Wert (Nebeneffekt), aber nicht über 100."""
+        neuer_wert = self.__beduerfnisse[etikett]["wert"] + wert
+        self.__beduerfnisse[etikett]["wert"] = min(100, neuer_wert)
+
+    def fuettern(self):
+        """Füttert das Pet: stillt den Hunger, macht dabei aber etwas dreckig."""
+        self._beduerfnis_senken("hunger", Werte.aktion_senkt_um_wert)
+        self._beduerfnis_steigern("dreck", Werte.aktion_nebeneffekt_wert)
+
+    def spielen(self):
+        """Spielt mit dem Pet: vertreibt die Langeweile, macht aber hungrig und müde."""
+        self._beduerfnis_senken("langeweile", Werte.aktion_senkt_um_wert)
+        self._beduerfnis_steigern("hunger", Werte.aktion_nebeneffekt_wert)
+        self._beduerfnis_steigern("muedigkeit", Werte.aktion_nebeneffekt_wert)
+
+    def schlafen(self):
+        """Lässt das Pet schlafen: nimmt die Müdigkeit, macht dabei aber hungrig."""
+        self._beduerfnis_senken("muedigkeit", Werte.aktion_senkt_um_wert)
+        self._beduerfnis_steigern("hunger", Werte.aktion_nebeneffekt_wert)
+
+    def putzen(self):
+        """Putzt das Pet: entfernt den Dreck."""
+        self._beduerfnis_senken("dreck", Werte.aktion_senkt_um_wert)
 # Propertys
 ## Hunger
     @property 
