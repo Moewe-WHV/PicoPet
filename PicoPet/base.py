@@ -48,7 +48,7 @@ class Beduerfnisse:
 # Bedürfnisse       
     def beduerfnisse_steigen(self):
         """Erhöht alle Bedürfniswerte beinhaltet Gesundheitlogik und den Timer."""
-# Bedürfniss
+# Bedürfniss Logik
         for etikett in self.__beduerfnisse:
             self.__beduerfnisse[etikett]["wert"] += Werte.bedüfniss_sinkt_um_wert
             if self.__beduerfnisse[etikett]["wert"] >= Werte.kritischer_beduerfniss_wert:
