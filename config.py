@@ -1,0 +1,17 @@
+class Werte:
+    """Hier sind Zeiten und Werte definiert. Keine Magic Numbers.
+        Args: 
+            threading_ticker: Die Zeit in der die Bedürfnisse sinken
+            kritischer_wert: Ab dem Wert wirken Bedürfnisse auf Gesundheit
+            bedürfniss_sinkt_um_wert: Um Diesen Wert sinken die Bedüftnisse 
+            Kritische_beduerfniss_runden: Durchläufe Bleiben bis das Pet stirbt
+            gesundheits_abzug: Um diesen Wert sinkt die Gesundheit nach Kritischen Bedürfnisse"""
+    
+    threading_werte =  720.0 #720.0
+    threading_alter = 86400.0 #86400
+    kritischer_beduerfniss_wert = 75
+    bedüfniss_sinkt_um_wert = 25
+    kritische_beduerfniss_runden = 5
+    gesundheits_abzug = 20
+    aktion_senkt_um_wert = 40
+    aktion_nebeneffekt_wert = 15
