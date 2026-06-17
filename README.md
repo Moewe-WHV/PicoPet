@@ -1,6 +1,7 @@
 # 🦕 PicoPet
 
-Ein textbasiertes Tamagotchi-Spiel mit grafischer Oberfläche, entwickelt in Python.  
+Ein textbasiertes Tamagotchi-Spiel, gespielt über das Terminal, entwickelt in Python.  
+Eine grafische Oberfläche (tkinter) ist in Planung.  
 Lernprojekt im Rahmen der Umschulung zum Fachinformatiker Anwendungsentwicklung (FIAE).
 
 ---
@@ -11,7 +12,8 @@ Lernprojekt im Rahmen der Umschulung zum Fachinformatiker Anwendungsentwicklung 
 |---|---|
 | **Version** | v0.1 (Entwicklungsversion) |
 | **Sprache** | Python |
-| **GUI** | tkinter |
+| **Bedienung** | Terminal (Texteingabe) |
+| **GUI** | tkinter (geplant) |
 | **Autor** | Tim K. |
 | **Status** | 🚧 In Entwicklung |
 
@@ -19,11 +21,11 @@ Lernprojekt im Rahmen der Umschulung zum Fachinformatiker Anwendungsentwicklung 
 
 ## 🎮 Features
 
-- Wähle dein Tamagotchi: **Dino** 🦕 oder **Vogel** 🐦
-- Kümmere dich um Hunger, Müdigkeit, Hygiene, Langeweile und Gesundheit
-- Werte sinken automatisch mit der Zeit – pass gut auf!
-- Dein Tamagotchi kann krank werden und sterben 💀
-- Spielstand wird automatisch gespeichert
+- Kümmere dich um deinen **Dino** 🦕 (weitere Tiere wie Vogel 🐦 sind geplant)
+- Halte Hunger, Müdigkeit, Langeweile, Dreck und Gesundheit im Blick
+- Bedürfnisse steigen automatisch mit der Zeit – pass gut auf!
+- Bei dauerhaft vernachlässigten Bedürfnissen wird dein Tamagotchi krank und kann sterben 💀 (das Savegame wird dann gelöscht)
+- Spielstand wird beim Beenden automatisch gespeichert und beim Start geladen (`savegame.json`)
 
 ---
 
@@ -49,6 +51,22 @@ python main.py
 
 ---
 
+## 🕹️ Steuerung
+
+Beim ersten Start vergibst du einen Namen für dein Pet. Danach steuerst du das Spiel
+über folgende Texteingaben:
+
+| Befehl     | Wirkung |
+|------------|---------|
+| `füttern`  | stillt den Hunger (macht etwas dreckig) |
+| `spielen`  | vertreibt die Langeweile (macht hungrig und müde) |
+| `schlafen` | nimmt die Müdigkeit (macht hungrig) |
+| `putzen`   | entfernt den Dreck |
+| `status`   | zeigt die aktuellen Werte |
+| `ende`     | speichert und beendet das Spiel |
+
+---
+
 ## 📁 Projektstruktur
 
 ```
@@ -64,8 +82,6 @@ PicoPet/                     # Root
 │   └── __init__.py
 ├── data/                    # Persistenz (in Entwicklung)
 │   └── __init__.py
-├── tests/                   # pytest Unittests
-│   └── test_tamagotchi.py
 ├── docs/                    # Projektdokumentation
 │   ├── Klassendiagramm_PicoPet.mmd
 │   ├── Entwickler_Use_Case.png
@@ -78,13 +94,6 @@ PicoPet/                     # Root
 
 ---
 
-## 🧪 Tests ausführen
-
-```bash
-pytest tests/
-```
-
----
 
 ## 🗺️ Roadmap
 
@@ -94,13 +103,14 @@ pytest tests/
 - [x] config.py – zentrale Spielwerte
 - [x] Basisklasse `Beduerfnisse` mit Threading & Gesundheitslogik
 - [x] Dino-Subklasse
-- [ ] Vogel-Subklasse
+- [x] Spielstand speichern/laden (JSON)
+- [x] Textbasierte Steuerung im Terminal (`main.py`)
 - [ ] tkinter GUI (`app.py`)
-- [ ] Spielstand speichern/laden (JSON)
 - [ ] Unittests grün
 
 ### Update (v2.x)
 
+- [ ] Vogel als neues Tamagotchi
 - [ ] Schlange als neues Tamagotchi
 - [ ] Toilettengang
 - [ ] Weitere Futterarten
